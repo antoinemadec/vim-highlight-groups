@@ -29,7 +29,7 @@ function! LoadHighlights()
   endif
 endfunction
 
-function! s:HighlightGroup(gr, w)
+function! s:HighlightGroupsAddWord(gr, w)
   call LoadHighlights()
   let group_name = 'hl' . a:gr
   let cmd = "syntax match " . group_name . " '\\\<" . expand ("<cword>") . "\\\>' containedin=ALL"
@@ -41,9 +41,9 @@ function! s:HighlightGroup(gr, w)
   endif
   exe cur_win . "wincmd w"
 endfunction
-command! -nargs=+ HighlightGroup call s:HighlightGroup(<f-args>)
+command! -nargs=+ HighlightGroupsAddWord call s:HighlightGroupsAddWord(<f-args>)
 
-function! s:ClearGroup(gr, w)
+function! s:HighlightGroupsClearGroup(gr, w)
   call LoadHighlights()
   let group_name = 'hl' . a:gr
   let cmd = "syntax clear " . group_name
@@ -55,4 +55,4 @@ function! s:ClearGroup(gr, w)
   endif
   exe cur_win . "wincmd w"
 endfunction
-command! -nargs=+ ClearGroup call s:ClearGroup(<f-args>)
+command! -nargs=+ HighlightGroupsClearGroup call s:HighlightGroupsClearGroup(<f-args>)

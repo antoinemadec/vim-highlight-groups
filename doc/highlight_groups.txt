@@ -1,0 +1,66 @@
+*highlight-groups*  Allow the user to add words in highlight groups on the fly
+
+Author:  Antoine Madec
+License: Same terms as Vim itself (see |license|)
+
+CONTENTS                                        *highlight-groups-contents*
+
+Introduction                                    |highlight-groups-intro|
+Commands                                        |highlight-groups-commands|
+Key Mappings                                    |highlight-groups-key-mappings|
+About                                           |highlight-groups-about|
+
+==============================================================================
+INTRODUCTION                                    *highlight-groups-intro*
+
+Allow the user to add words in highlight groups on the fly.
+Each group has a different color.
+The highlight mechanism used by this plugin is |:syn-match|, meaning
+that it cannot search for words featured in a group.
+
+The goal of this plugin is to allow the user to mark words and increase
+readabilty of certain lines of code.
+It is especially useful to visualy compare 2 function signatures, or any kind
+of other interfaces.
+
+------------------------------------------------------------------------------
+COMMANDS                                        *highlight-groups-commands*
+
+                                                *:HighlightGroupsAddWord*
+:HighlightGroupsAddWord {group_id} {windo}
+        Add word under cursor in {group_id}, highlight it with group's color.
+        {group_id} = {1..29}
+        {windo} = {0,1}
+          0 runs the command in the current window only
+          1 runs the command in all the open windows
+
+                                                *:HighlightGroupsClearGroup*
+:HighlightGroupsClearGroup {group_id} {windo}
+        Clear all words in {group_id}.
+        {group_id} = {1..29}
+        {windo} = {0,1}
+          0 runs the command in the current window only
+          1 runs the command in all the open windows
+
+------------------------------------------------------------------------------
+KEY MAPPINGS                                    *highlight-groups-key-mappings*
+
+By default, their is no mapping.
+Here is an example of a mapping using groups 4 and 6 to add in your *vimrc* :
+
+        nnoremap <silent> <F5> :HighlightGroupsAddWord 4 0<CR>
+        nnoremap <silent> <F6> :HighlightGroupsAddWord 6 0<CR>
+        nnoremap <silent> <S-F5> :HighlightGroupsClearGroup 4 0<CR>
+        nnoremap <silent> <S-F6> :HighlightGroupsClearGroup 6 0<CR>
+        nnoremap <silent> <C-F5> :HighlightGroupsAddWord 4 1<CR>
+        nnoremap <silent> <C-F6> :HighlightGroupsAddWord 6 1<CR>
+        nnoremap <silent> <C-S-F5> :HighlightGroupsClearGroup 4 1<CR>
+        nnoremap <silent> <C-S-F6> :HighlightGroupsClearGroup 6 1<CR>
+
+------------------------------------------------------------------------------
+ABOUT                                           *highlight-groups-about*
+
+Look at an example, grab the latest version or report a bug on GitHub:
+https://github.com/antoinemadec/vim-highlight-groups
+
+ vim:tw=78:ts=8:ft=help:norl:
