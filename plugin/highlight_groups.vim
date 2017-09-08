@@ -1,3 +1,6 @@
+" Add words in highlight groups on the fly
+" Maintainer:   Antoine Madec <http://github.com/antoinemadec/>
+
 if v:version < 702 || exists('loaded_highlightmultiple') || &cp
   finish
 endif

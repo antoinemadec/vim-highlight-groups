@@ -42,6 +42,8 @@ nnoremap <silent> <C-S-F6> :HighlightGroupsClearGroup 6 1<CR>
 Author
 ------
 
+Inspired by Mario Trentini's highlights.vim
+
 [Antoine Madec](https://github.com/antoinemadec)
 
 License
