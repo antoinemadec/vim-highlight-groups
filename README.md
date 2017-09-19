@@ -1,4 +1,4 @@
-vim-highlight-groups
+highlight-groups.vim
 ====================
 
 Allow the user to add words in highlight groups on the fly.
