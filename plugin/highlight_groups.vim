@@ -14,14 +14,16 @@ let s:loaded_data = 0
 function! LoadHighlights()
   if !s:loaded_data
     if filereadable(s:data_file)
-      let names = ['hl', 'ctermfg=', 'ctermbg=', 'guifg=', 'guibg=']
+      " bg/fg swapped compared to .csv because:
+      " (bg/fg swap + reverse) makes highlight visible when using cursorline
+      let names = ['hl', 'ctermbg=', 'ctermfg=', 'guibg=', 'guifg=']
       for line in readfile(s:data_file)
         let fields = split(line, ',', 1)
         if len(fields) == 5 && fields[0] =~ '^\d\+$'
           let cmd = range(5)
           call map(cmd, 'names[v:val].fields[v:val]')
           call filter(cmd, 'v:val!~''=$''')
-          execute 'silent highlight '.join(cmd)
+          execute 'silent highlight ' . join(cmd) . ' cterm=reverse gui=reverse'
         endif
       endfor
       let s:loaded_data = 1
