@@ -3,8 +3,6 @@ highlight-groups.vim
 
 Allow the user to add words in highlight groups on the fly.
 Each group has a different color.
-The highlight mechanism used by this plugin is :syn-match, meaning
-that it cannot search for words featured in a group.
 
 The goal of this plugin is to allow the user to mark words and increase
 readabilty of certain lines of code.
@@ -29,22 +27,29 @@ Quick start guide
 
 Here is an example of mapping in your `.vimrc`:
 ```vim
-nnoremap <silent> <F5> :HighlightGroupsAddWord 4 0<CR>
-nnoremap <silent> <F6> :HighlightGroupsAddWord 6 0<CR>
-nnoremap <silent> <S-F5> :HighlightGroupsClearGroup 4 0<CR>
-nnoremap <silent> <S-F6> :HighlightGroupsClearGroup 6 0<CR>
-nnoremap <silent> <C-F5> :HighlightGroupsAddWord 4 1<CR>
-nnoremap <silent> <C-F6> :HighlightGroupsAddWord 6 1<CR>
-nnoremap <silent> <C-S-F5> :HighlightGroupsClearGroup 4 1<CR>
-nnoremap <silent> <C-S-F6> :HighlightGroupsClearGroup 6 1<CR>
+nnoremap <silent> <F5>     :HighlightGroupsAddWord    13 1<CR>
+nnoremap <silent> \<F5>    :HighlightGroupsClearGroup 13 1<CR>
+nnoremap <silent> <F6>     :HighlightGroupsAddWord    17 1<CR>
+nnoremap <silent> \<F6>    :HighlightGroupsClearGroup 17 1<CR>
 ```
 
-Author
-------
+Complete API
+------------
 
-Inspired by Mario Trentini's highlights.vim
+To highlight the word under the cursor:
+```vim
+:HighlightGroupsClearGroup <group_nb> <all_window>
+:HighlightGroupsAddWord    <group_nb> <all_window>
+```
 
-[Antoine Madec](https://github.com/antoinemadec)
+Core functions:
+```vim
+" function MatchAdd(group_name, hl, pattern, priority)
+" function MatchDelete(group_name)
+call MatchUpdate('my_own_group', 'IncSearch', '\s\+$', 11)
+call MatchUpdate('my_own_group', 'Error', 'compilation failed', 11)
+call MatchDelete('my_own_group')
+```
 
 License
 ------
