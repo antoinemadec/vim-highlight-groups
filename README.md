@@ -1,13 +1,9 @@
 highlight-groups.vim
 ====================
 
-Allow the user to add words in highlight groups on the fly.
-Each group has a different color.
+Add word under the cursor in different highlight groups on the fly.
 
-The goal of this plugin is to allow the user to mark words and increase
-readabilty of certain lines of code.
-It is especially useful to visualy compare 2 function signatures, or any kind
-of other interfaces.
+Each group has a different color.
 
 ![](https://raw.githubusercontent.com/antoinemadec/gif/master/highlightgroups.gif)
 
@@ -25,7 +21,7 @@ Plug 'antoinemadec/vim-highlight-groups'
 Quick start guide
 -----------------
 
-Here is an example of mapping in your `.vimrc`:
+`.vimrc`:
 ```vim
 nnoremap <silent> <F5>     :HighlightGroupsAddWord    13 1<CR>
 nnoremap <silent> \<F5>    :HighlightGroupsClearGroup 13 1<CR>
@@ -46,8 +42,8 @@ Core functions:
 ```vim
 " function MatchAdd(group_name, hl, pattern, priority)
 " function MatchDelete(group_name)
-call MatchUpdate('my_own_group', 'IncSearch', '\s\+$', 11)
-call MatchUpdate('my_own_group', 'Error', 'compilation failed', 11)
+call MatchAdd('my_own_group', 'IncSearch', '\s\+$', 11)
+call MatchAdd('my_own_group', 'Error', 'compilation failed', 11)
 call MatchDelete('my_own_group')
 ```
 
