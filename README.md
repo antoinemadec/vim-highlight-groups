@@ -1,7 +1,7 @@
 highlight-groups.vim
 ====================
 
-Add word under the cursor in different highlight groups on the fly.
+Add the word under the cursor in different highlight groups.
 
 Each group has a different color.
 
@@ -21,7 +21,7 @@ Plug 'antoinemadec/vim-highlight-groups'
 Quick start guide
 -----------------
 
-`.vimrc`:
+Add this in your `.vimrc`:
 ```vim
 nnoremap <silent> <F5>     :HighlightGroupsAddWord    13 1<CR>
 nnoremap <silent> \<F5>    :HighlightGroupsClearGroup 13 1<CR>

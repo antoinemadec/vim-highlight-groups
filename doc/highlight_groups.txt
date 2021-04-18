@@ -1,4 +1,4 @@
-*highlight-groups*  Add word under the cursor in different highlight groups on the fly
+*highlight-groups*  Add the word under the cursor in different highlight groups
 
 Author:  Antoine Madec
 License: Same terms as Vim itself (see |license|)
